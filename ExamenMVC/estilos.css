@@ -1,0 +1,318 @@
+/* <link rel="stylesheet" href="estilos.css"> */
+/* 1. COLORES Y CONFIGURACION GENERAL */
+:root {
+    color-scheme: light;
+    --fondo: #f4f7fb;
+    --superficie: #ffffff;
+    --texto: #1e293b;
+    --texto-suave: #58677a;
+    --principal: #2563eb;
+    --principal-oscuro: #1d4ed8;
+    --borde: #dce4ef;
+    --fila-alterna: #f7faff;
+    --radio: 12px;
+    --sombra: 0 5px 18px rgba(27, 44, 75, 0.06);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 1100px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 30px 20px 55px;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+/* 2. TITULOS, PARRAFOS Y TEXTO */
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.4em 0 0.55em;
+    color: #142642;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+h1 { margin-top: 0; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.05rem; }
+h6 { font-size: 0.95rem; }
+
+p { margin: 0 0 1rem; }
+small { color: var(--texto-suave); font-size: 0.86em; }
+strong, b { font-weight: 700; }
+mark { background: #fef3c7; padding: 0.1em 0.25em; border-radius: 3px; }
+
+/* 3. ENLACES */
+a {
+    color: var(--principal);
+    text-decoration: none;
+    text-underline-offset: 3px;
+}
+a:hover { color: var(--principal-oscuro); text-decoration: underline; }
+a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 3px; border-radius: 3px; }
+
+/* 4. CONTENEDORES Y ELEMENTOS SEMANTICOS */
+/* div no lleva recuadro por defecto: se usa para organizar contenido
+   y decorarlo siempre podria estropear distribuciones de ejercicios. */
+main, section, article, aside { min-width: 0; }
+section, article { margin-bottom: 1.5rem; }
+header { margin-bottom: 1.4rem; }
+footer { margin-top: 2rem; color: var(--texto-suave); font-size: 0.9rem; }
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+    margin: 1rem 0 1.5rem;
+    padding: 13px 17px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--superficie);
+}
+nav a { font-weight: 600; }
+
+hr { border: 0; border-top: 1px solid var(--borde); margin: 1.8rem 0; }
+
+/* 5. LISTAS */
+ul, ol { margin: 0 0 1rem; padding-left: 1.7rem; }
+li { margin-bottom: 0.3rem; }
+li::marker { color: var(--principal); }
+dl { margin: 0 0 1rem; }
+dt { font-weight: 700; }
+dd { margin: 0 0 0.75rem 1.5rem; }
+
+/* 6. TABLAS (incluidas tablas generadas con PHP) */
+table {
+    width: 100%;
+    margin: 1rem 0 1.6rem;
+    border-collapse: collapse;
+    border: 1px solid var(--borde);
+    background: var(--superficie);
+    box-shadow: var(--sombra);
+    font-size: 0.95rem;
+}
+caption {
+    padding: 10px 0;
+    color: var(--texto-suave);
+    text-align: left;
+    font-weight: 700;
+}
+th, td {
+    padding: 12px 14px;
+    border: 1px solid var(--borde);
+    text-align: left;
+    vertical-align: middle;
+}
+th {
+    background: #e7efff;
+    color: #18365f;
+    font-weight: 700;
+}
+tbody tr:nth-child(even) { background: var(--fila-alterna); }
+tbody tr:hover { background: #edf4ff; }
+
+/* 7. FORMULARIOS (GET/POST) */
+form {
+    width: 100%;
+    margin: 1rem 0 1.6rem;
+    padding: 22px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--superficie);
+    box-shadow: var(--sombra);
+}
+
+/* Formularios pequeños dentro de una tabla: sin tarjeta grande */
+td form, th form, .acciones form {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #31425d;
+    font-weight: 600;
+}
+
+/* Campos de texto y tipos habituales: text, password, email,
+   number, date, datetime-local, time, url, tel, search... */
+input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="file"]):not([type="range"]):not([type="color"]):not([type="image"]),
+select, textarea {
+    max-width: 100%;
+    min-height: 41px;
+    padding: 9px 12px;
+    border: 1px solid #bdcadd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--texto);
+    font: inherit;
+    font-size: 0.95rem;
+    vertical-align: middle;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]):not([type="file"]):not([type="range"]):not([type="color"]):not([type="image"]):focus,
+select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--principal);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+textarea { display: block; width: 100%; min-height: 105px; resize: vertical; }
+select { cursor: pointer; }
+option { color: var(--texto); }
+input[type="radio"], input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin: 0 6px 0 4px;
+    accent-color: var(--principal);
+    vertical-align: middle;
+    cursor: pointer;
+}
+input[type="range"] { accent-color: var(--principal); max-width: 100%; }
+input[type="color"] { width: 48px; height: 38px; padding: 3px; cursor: pointer; }
+input[type="file"] { max-width: 100%; font: inherit; font-size: 0.92rem; }
+input:disabled, select:disabled, textarea:disabled, button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+input[readonly], textarea[readonly] { background: #f1f5f9; }
+
+fieldset {
+    min-width: 0;
+    margin: 0 0 1.2rem;
+    padding: 14px 17px;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+}
+legend { padding: 0 7px; color: #26456d; font-weight: 700; }
+
+/* 8. BOTONES (incluye los de formularios y tablas) */
+button, input[type="submit"], input[type="button"], input[type="reset"] {
+    display: inline-block;
+    max-width: 100%;
+    min-height: 39px;
+    margin: 4px 4px 4px 0;
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: var(--principal);
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+}
+button:hover:not(:disabled), input[type="submit"]:hover:not(:disabled),
+input[type="button"]:hover:not(:disabled), input[type="reset"]:hover:not(:disabled) {
+    background: var(--principal-oscuro);
+    transform: translateY(-1px);
+}
+button:focus-visible, input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible, input[type="reset"]:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+input[type="reset"] { background: #64748b; }
+input[type="reset"]:hover:not(:disabled) { background: #475569; }
+
+/* 9. IMAGENES Y MULTIMEDIA */
+img, video, canvas, svg { max-width: 100%; height: auto; }
+figure { margin: 1.3rem 0; }
+figcaption { margin-top: 6px; color: var(--texto-suave); font-size: 0.9rem; }
+iframe { max-width: 100%; border: 0; }
+
+/* 10. CODIGO, CITAS Y OTROS ELEMENTOS */
+code, pre, kbd, samp { font-family: Consolas, 'Courier New', monospace; }
+code { padding: 2px 5px; border-radius: 4px; background: #e9eef7; font-size: 0.92em; }
+pre {
+    max-width: 100%;
+    margin: 1rem 0;
+    padding: 17px;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    background: #e9eef7;
+    overflow-x: auto;
+    white-space: pre;
+}
+pre code { padding: 0; background: none; }
+blockquote {
+    margin: 1rem 0;
+    padding: 10px 20px;
+    border-left: 4px solid var(--principal);
+    background: #eaf2ff;
+    border-radius: 0 8px 8px 0;
+}
+details {
+    margin: 1rem 0;
+    padding: 12px 15px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--superficie);
+}
+summary { font-weight: 700; cursor: pointer; }
+progress, meter { max-width: 100%; accent-color: var(--principal); }
+
+/* 11. CLASES OPCIONALES: NO HACE FALTA USARLAS */
+.contenedor, .tarjeta {
+    margin-bottom: 1.5rem;
+    padding: 22px;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--superficie);
+    box-shadow: var(--sombra);
+}
+.contenedor > :first-child, .tarjeta > :first-child { margin-top: 0; }
+.centrado { text-align: center; }
+.derecha { text-align: right; }
+.acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.acciones button, .acciones input[type="submit"] { margin: 0; }
+.error, .exito, .aviso {
+    margin: 1rem 0;
+    padding: 12px 15px;
+    border: 1px solid;
+    border-radius: 9px;
+}
+.error { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.exito { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.aviso { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+.oculto { display: none !important; }
+
+/* 12. MOVIL / PANTALLAS PEQUENAS */
+@media (max-width: 650px) {
+    body { padding: 18px 12px 35px; }
+    form { padding: 15px; }
+    th, td { padding: 9px 10px; }
+    /* Permite deslizar lateralmente tablas anchas en el movil */
+    table { display: block; max-width: 100%; overflow-x: auto; white-space: nowrap; }
+    td form, th form { white-space: normal; }
+    nav { gap: 9px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
